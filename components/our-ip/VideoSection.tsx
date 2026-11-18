@@ -18,15 +18,13 @@ export default function VideoSection() {
   };
 
   return (
-    <section className="relative w-full py-12 px-4 md:px-8 bg-transparent z-10">
+    <section className="relative w-full py-12 bg-transparent z-10">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8 }}
-        // 👇 max-w-7xl (1280px)
-        className="relative w-full max-w-7xl mx-auto aspect-video rounded-2xl border-2 border-kardo-accent/60 overflow-hidden bg-black/40 backdrop-blur-md"
-      >
+className="relative w-full aspect-video border-2 border-kardo-accent/60 overflow-hidden bg-black/40 backdrop-blur-md"      >
         {hasError ? (
           <div className="w-full h-full flex flex-col items-center justify-center text-white/60 gap-4">
             <p className="text-lg">Video format not supported</p>

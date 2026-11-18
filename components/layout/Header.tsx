@@ -19,28 +19,44 @@ export default function Header({ activePage = "HOME" }: { activePage?: string })
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="absolute top-0 left-0 w-full z-50 px-6 md:px-10 py-6 flex justify-between items-center"
+      className="fixed top-0 left-0 w-full z-50"
     >
-      <Link href="/">
-        <div className="w-24 md:w-32 relative mix-blend-screen">
-          <Image src="/images/logo-kardooni.png" alt="Kardooni Studios" width={200} height={80} priority className="object-contain" />
+      {/* کادر سیاه با لبه‌های محو */}
+      <div className="w-full px-4 md:px-8">
+        <div className="relative w-full max-w-6xl mx-auto">
+          {/* لایه پس‌زمینه سیاه با محو شدن لبه‌ها */}
+          <div className="absolute inset-0 bg-black/80 backdrop-blur-md" 
+               style={{
+                 maskImage: "linear-gradient(to bottom, black 60%, transparent 100%)",
+                 WebkitMaskImage: "linear-gradient(to bottom, black 60%, transparent 100%)"
+               }}
+          />
+          
+          {/* محتوای هدر */}
+          <div className="relative z-10 py-4 flex justify-between items-center">
+            <Link href="/">
+              <div className="w-24 md:w-32 relative mix-blend-screen">
+                <Image src="/images/logo-kardooni.png" alt="Kardooni Studios" width={200} height={80} priority className="object-contain" />
+              </div>
+            </Link>
+            <nav className="hidden md:flex gap-6 lg:gap-10">
+              {NAV_ITEMS.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className={`text-xs lg:text-sm tracking-widest font-medium transition-colors duration-300 ${
+                    item.label === activePage
+                      ? "text-white border-b-2 border-kardo-accent pb-1"
+                      : "text-kardo-muted hover:text-white"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
         </div>
-      </Link>
-      <nav className="hidden md:flex gap-6 lg:gap-10">
-        {NAV_ITEMS.map((item) => (
-          <Link
-            key={item.label}
-            href={item.href}
-            className={`text-xs lg:text-sm tracking-widest font-medium transition-colors duration-300 ${
-              item.label === activePage
-                ? "text-white border-b-2 border-kardo-accent pb-1"
-                : "text-kardo-muted hover:text-white"
-            }`}
-          >
-            {item.label}
-          </Link>
-        ))}
-      </nav>
+      </div>
     </motion.header>
   );
 }

@@ -10,9 +10,8 @@ const GALLERY_IMAGES = [
 
 export default function Gallery() {
   return (
-    <section className="relative w-full py-10 px-4 md:px-8 z-10">
-      {/* 👇 max-w-7xl */}
-      <div className="w-full max-w-7xl mx-auto flex flex-col gap-8">
+    <section className="relative w-full py-10 z-10">
+      <div className="w-full flex flex-col gap-8">
         {GALLERY_IMAGES.map((img, i) => (
           <motion.div
             key={i}
@@ -20,7 +19,7 @@ export default function Gallery() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.8, delay: i * 0.1 }}
-            className="relative w-full aspect-video rounded-2xl border-2 border-kardo-accent/60 overflow-hidden group bg-black/40"
+            className="relative w-full aspect-video border-2 border-kardo-accent/60 overflow-hidden group bg-black/40"
           >
             <Image
               src={img.src}

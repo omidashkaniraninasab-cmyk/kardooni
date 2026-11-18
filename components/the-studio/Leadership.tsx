@@ -19,8 +19,8 @@ const LEADERS = [
 
 export default function Leadership() {
   return (
-    <section className="relative w-full py-16 px-6 md:px-10">
-      <div className="max-w-7xl mx-auto">
+   <section className="relative w-full py-16">
+      <div className="w-full">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 relative">
           {LEADERS.map((leader, i) => (
             <motion.div

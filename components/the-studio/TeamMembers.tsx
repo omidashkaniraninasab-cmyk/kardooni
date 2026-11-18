@@ -28,8 +28,8 @@ const MEMBERS = [
 
 export default function TeamMembers() {
   return (
-    <section className="relative w-full py-16 px-6 md:px-10">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative w-full py-16">
+      <div className="w-full">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

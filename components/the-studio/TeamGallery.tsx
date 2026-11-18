@@ -13,8 +13,8 @@ const TEAM_IMAGES = [
 
 export default function TeamGallery() {
   return (
-    <section className="relative w-full py-16 px-6 md:px-10">
-      <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+   <section className="relative w-full py-16">
+      <div className="w-full grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
         {/* عکس بزرگ چپ */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
