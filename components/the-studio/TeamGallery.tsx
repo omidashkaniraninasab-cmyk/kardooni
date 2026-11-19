@@ -2,6 +2,12 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
+interface MotionImageProps {
+  img: { src: string; alt: string };
+  delay?: number;
+  big?: boolean;
+}
+
 const TEAM_IMAGES = [
   { src: "/images/team-1.jpg", alt: "Team working" },
   { src: "/images/team-2.jpg", alt: "Team working" },
@@ -18,7 +24,7 @@ const TEAM_IMAGES = [
   { src: "/images/team-13.jpg", alt: "Team working" },
 ];
 
-const MotionImage = ({ img, delay, big = false }) => (
+const MotionImage = ({ img, delay = 0, big = false }: MotionImageProps) => (
   <motion.div
     initial={{ opacity: 0, scale: 0.95 }}
     whileInView={{ opacity: 1, scale: 1 }}

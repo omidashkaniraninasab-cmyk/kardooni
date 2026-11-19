@@ -13,7 +13,7 @@ const CAPABILITIES = [
 ];
 
 export default function CapabilitiesList() {
-  const [hoveredIdx, setHoveredIdx] = useState(null);
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
   return (
     <div className="w-full lg:w-[55%] z-20 flex flex-col relative mt-16 lg:mt-0 lg:pt-16">
