@@ -8,7 +8,7 @@ export default function ContactForm() {
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
-      className="w-full flex flex-col"
+      className="w-full flex flex-col lg:pr-8"
     >
       {/* لوگوی بزرگ کاردونی */}
       <div className="relative w-full flex justify-center mb-10 mix-blend-screen">
@@ -22,7 +22,7 @@ export default function ContactForm() {
       </div>
 
       {/* فرم - با mt-40 خیلی پایین‌تر اومد */}
-      <form className="w-full flex flex-col gap-5 mt-40">
+      <form className="w-full flex flex-col gap-5">
         {/* ردیف اول: Name و Email */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <InputField icon={<UserIcon />} placeholder="Your Name" type="text" />

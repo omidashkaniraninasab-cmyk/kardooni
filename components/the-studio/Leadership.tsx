@@ -12,7 +12,7 @@ const LEADERS = [
   {
     name: "FORNOOSH SHAJARI",
     role: "Production Manager",
-    description: "An experienced production management professional with international experience in visual effects production. She has managed and coordinated production workflows for various VFX projects, leading teams and overseeing complex delivery pipelines.",
+    description: "An experienced production management professional with international experience in visual effects production. She has managed and coordinated production workflows across various VFX projects, leading teams, managing schedules, and overseeing complex production and delivery pipelines.",
     image: "/images/fornoosh.jpg",
   },
 ];
@@ -32,7 +32,7 @@ export default function Leadership() {
               className="flex flex-col md:flex-row items-center gap-6"
             >
               {/* عکس با گوشه‌های نارنجی */}
-              <div className="relative w-40 h-48 md:w-48 md:h-56 shrink-0 rounded-2xl overflow-hidden border-2 border-kardo-accent/70">
+              <div className="relative w-40 h-56 md:w-48 md:h-72 shrink-0 rounded-2xl overflow-hidden border-2 border-kardo-accent/70">
                 <Image
                   src={leader.image}
                   alt={leader.name}

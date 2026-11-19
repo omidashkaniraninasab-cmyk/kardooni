@@ -28,7 +28,6 @@ const STATUS_STYLES: Record<Status, { label: string; classes: string }> = {
   "not-needed": { label: "Not Needed", classes: "bg-red-950/40 border-red-500 text-red-400" },
 };
 
-// لینک مقصد برای درخواست شغل
 const APPLY_URL = "https://badstache.com/contact-us/job-apply/";
 
 export default function OpenPositions() {
@@ -36,10 +35,10 @@ export default function OpenPositions() {
   const rightCol = POSITIONS.slice(6);
 
   return (
-    <section className="relative w-full pt-32 pb-16 px-6 md:px-10">
-      <div className="max-w-[1600px] mx-auto">
+    <section className="relative w-full pt-16 pb-16">
+      <div className="w-full">
         
-        {/* نوار سفید نورانی بالای OPEN POSITIONS */}
+        {/* نوار سفید نورانی */}
         <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent shadow-[0_0_15px_rgba(255,255,255,0.4)] mb-8" />
 
         <motion.div
@@ -74,8 +73,6 @@ export default function OpenPositions() {
 
 function PositionRow({ position, delay }: { position: Position; delay: number }) {
   const status = STATUS_STYLES[position.status];
-  
-  // تعیین قابلیت کلیک بر اساس وضعیت
   const isClickable = position.status === "open" || position.status === "future";
 
   const content = (
@@ -96,7 +93,6 @@ function PositionRow({ position, delay }: { position: Position; delay: number })
     boxShadow: "0 0 20px rgba(255,255,255,0.05)"
   };
 
-  // اگر قابل کلیک باشه، با تگ <a> به سایت خارجی لینک میشه
   if (isClickable) {
     return (
       <motion.div
@@ -118,7 +114,6 @@ function PositionRow({ position, delay }: { position: Position; delay: number })
     );
   }
 
-  // برای Not Needed (بدون لینک و غیرفعال)
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}

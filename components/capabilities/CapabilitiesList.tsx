@@ -13,88 +13,108 @@ const CAPABILITIES = [
 ];
 
 export default function CapabilitiesList() {
-  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
-
-  const getOffsetY = (index: number) => {
-    if (index === 0) return -80;
-    if (index === 1) return -60;
-    if (index === 2) return -40;
-    if (index === 3) return -20;
-    if (index === 4) return -20;
-    if (index === 5) return -30;
-    if (index === 6) return -40;
-    return 0;
-  };
+  const [hoveredIdx, setHoveredIdx] = useState(null);
 
   return (
-    // 👇 تغییر اصلی: اضافه شدن lg:translate-x-32 xl:translate-x-48 برای حرکت به راست
-    <div className="w-full lg:w-[60%] z-20 flex flex-col relative mt-[150px] lg:translate-x-32 xl:translate-x-48">
+    <div className="w-full lg:w-[55%] z-20 flex flex-col relative mt-16 lg:mt-0 lg:pt-16">
       
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col w-full relative z-10">
         {CAPABILITIES.map((item, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, x: 50, y: getOffsetY(i) }}
-            animate={{ 
-              opacity: 1, 
-              x: hoveredIdx === i ? -10 : 0,
-              y: getOffsetY(i)
-            }}
-            transition={{
-              x: { duration: 0.3, ease: "easeOut" },
-              opacity: { duration: 0.8, delay: i * 0.1 },
-            }}
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: i * 0.05 }}
             onMouseEnter={() => setHoveredIdx(i)}
             onMouseLeave={() => setHoveredIdx(null)}
-            className={`group relative flex items-center justify-between px-4 md:px-6 py-6 md:py-8 border-b transition-colors duration-500 cursor-pointer ${
+            className={`group relative flex items-center justify-between px-4 md:px-6 py-3 md:py-4 transition-colors duration-500 cursor-pointer ${
               hoveredIdx === i 
-                ? "border-kardo-accent shadow-[0_10px_30px_rgba(232,119,34,0.15)] bg-black/20" 
-                : "border-white/10"
+                ? "shadow-[0_10px_30px_rgba(232,119,34,0.15)] bg-black/40" 
+                : ""
             }`}
           >
-            {i === 0 && (
-              <div className={`absolute top-0 left-0 w-full h-[1px] ${
-                hoveredIdx === 0 ? "bg-kardo-accent/50 shadow-[0_0_10px_rgba(232,119,34,0.8)]" : "bg-white/10"
-              }`} />
-            )}
+            {/* خط نورانی زیرین */}
+ <div 
+  className={`absolute bottom-0 left-0 w-full h-[2px] transition-all duration-500 ${
+    hoveredIdx === i
+      ? "bg-gradient-to-r from-transparent via-kardo-accent to-transparent shadow-[0_0_20px_rgba(232,119,34,1)]"
+      : "bg-gradient-to-r from-transparent via-white/80 to-transparent animate-pulse-glow"
+  }`}
+/>
 
-            <div className="flex items-center gap-4 md:gap-8">
-              <span className={`text-2xl md:text-4xl font-light transition-colors duration-500 ${
-                hoveredIdx === i ? "text-kardo-accent drop-shadow-[0_0_10px_rgba(232,119,34,0.8)]" : "text-white/60"
-              }`}>
-                {item.num}
-              </span>
-              <span className={`text-xl font-light transition-colors duration-500 ${
-                hoveredIdx === i ? "text-kardo-accent" : "text-white/20"
-              }`}>|</span>
-              <h3 className={`text-sm md:text-xl font-bold tracking-wider transition-colors duration-500 ${
-                hoveredIdx === i ? "text-white" : "text-white/80"
-              }`}>
-                {item.title}
-              </h3>
-            </div>
+            {/* خط نورانی SVG - دایره به چپ منتقل شد */}
+            <svg 
+              className="hidden lg:block absolute left-[-120px] top-0 w-[150px] h-full pointer-events-none z-0" 
+              viewBox="0 0 150 100" 
+              fill="none"
+            >
+              <defs>
+                <linearGradient id={`glowGradient-${i}`} x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stopColor="rgba(232,119,34,0)" />
+                  <stop offset="40%" stopColor="rgba(232,119,34,1)" />
+                  <stop offset="100%" stopColor="rgba(232,119,34,1)" />
+                </linearGradient>
+                <filter id={`glow-${i}`} x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="2.5" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
 
-            <p className={`hidden xl:block w-[40%] text-xs md:text-sm leading-relaxed text-right transition-colors duration-500 ${
-              hoveredIdx === i ? "text-white/90" : "text-white/40"
-            }`}>
-              {item.desc}
-            </p>
-
-            {hoveredIdx === i && (
-              <motion.div 
-                layoutId="glow-line"
-                className="absolute bottom-[-1px] left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-kardo-accent to-transparent shadow-[0_0_20px_rgba(232,119,34,1)]"
+              {/* منحنی نورانی - نقطه پایانی به 120 منتقل شد */}
+              <path
+                d="M 0 85 C 50 85, 70 50, 120 50"
+                stroke={`url(#glowGradient-${i})`}
+                strokeWidth="2"
+                filter={`url(#glow-${i})`}
+                className={`transition-opacity duration-300 ${hoveredIdx === i ? "opacity-100" : "opacity-40"}`}
               />
-            )}
+
+              {/* دایره نورانی - cx به 120 تغییر کرد تا از اعداد فاصله بگیرد */}
+              <circle
+                cx="120"
+                cy="50"
+                r={hoveredIdx === i ? 5 : 3.5}
+                fill="#E87722"
+                filter={`url(#glow-${i})`}
+                className="transition-all duration-300"
+              />
+            </svg>
+
+            {/* محتوای آیتم */}
+            <div className="flex items-center justify-between w-full relative z-10 transition-transform duration-300 group-hover:-translate-x-2">
+              <div className="flex items-center gap-4 md:gap-6">
+                <span className={`text-2xl md:text-4xl font-light transition-colors duration-500 ${
+                  hoveredIdx === i ? "text-kardo-accent drop-shadow-[0_0_10px_rgba(232,119,34,0.8)]" : "text-white/60"
+                }`}>
+                  {item.num}
+                </span>
+                <span className={`text-xl font-light transition-colors duration-500 ${
+                  hoveredIdx === i ? "text-kardo-accent" : "text-white/20"
+                }`}>|</span>
+                <h3 className={`text-sm md:text-lg font-bold tracking-wider transition-colors duration-500 ${
+                  hoveredIdx === i ? "text-white" : "text-white/80"
+                }`}>
+                  {item.title}
+                </h3>
+              </div>
+
+              <p className={`hidden xl:block w-[35%] text-xs md:text-sm leading-relaxed text-right transition-colors duration-500 ${
+                hoveredIdx === i ? "text-white/90" : "text-white/40"
+              }`}>
+                {item.desc}
+              </p>
+            </div>
           </motion.div>
         ))}
       </div>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.8 }}
-        className="flex justify-end mt-12"
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+        className="flex justify-end mt-10"
       >
         <a 
           href="/contact" 

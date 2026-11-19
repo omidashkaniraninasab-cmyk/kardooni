@@ -15,7 +15,7 @@ export default function StudioHero() {
             <span className="italic text-kardo-accent">STUDIOS</span>
           </h1>
           <p className="text-white/80 text-sm md:text-base leading-relaxed mb-4">
-            Kardooni Studios is an independent animation and visual effects studio based in Yerevan, Armenia. We develop original intellectual properties and deliver a wide range of animation, CG, and VFX production services.
+            Kardooni Studios is an independent animation studio based in Yerevan, Armenia. We develop original intellectual properties and deliver a wide range of animation, CG, and VFX production services.
           </p>
           <p className="text-white/80 text-sm md:text-base leading-relaxed">
             From original animated productions to complex visual effects projects, we combine creative vision, technical expertise, and production experience to create distinctive visual experiences for film, television, and digital media.
