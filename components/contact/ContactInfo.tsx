@@ -20,7 +20,7 @@ const CONTACT_ITEMS = [
       </svg>
     ),
     label: "EMAIL",
-    value: "KardooniStudios@gmail.com",
+    value: "kardoonistudios@gmail.com",
   },
   {
     icon: (
