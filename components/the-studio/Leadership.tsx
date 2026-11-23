@@ -10,10 +10,10 @@ const LEADERS = [
     image: "/images/javad.jpg",
   },
   {
-    name: "FORNOOSH SHAJARI",
+    name: "FARNOOSH SHAJARI",
     role: "Production Manager",
     description: "An experienced production management professional with international experience in visual effects production. She has managed and coordinated production workflows across various VFX projects, leading teams, managing schedules, and overseeing complex production and delivery pipelines.",
-    image: "/images/fornoosh.jpg",
+    image: "/images/farnoosh.jpg",
   },
 ];
 
