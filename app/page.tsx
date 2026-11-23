@@ -5,68 +5,49 @@ import Header from "@/components/layout/Header";
 
 export default function Home() {
   return (
-    <main className="relative w-full overflow-x-hidden bg-black">
-      
-      {/* کانتینر مشترک */}
-      <div className="w-full px-4 md:px-8">
-        <div className="relative w-full max-w-6xl mx-auto min-h-[110vh] pt-16 md:pt-0 md:-mt-16 pb-20 flex flex-col md:block">
+    <main className="relative min-h-dvh md:h-screen w-full overflow-hidden bg-black">
 
-          {/* بک‌گراند داخل کانتینر با افکت هاور و لرزش */}
-          <motion.div 
-            className="relative md:absolute md:inset-0 z-0 bg-[#0a0a0a] overflow-hidden w-full h-[35vh] md:h-full rounded-lg"
-            whileHover={{ scale: 1.02 }} // ← rotate حذف شد
-            whileTap={{ 
-              x: [0, -3, 3, -3, 3, 0],
-              transition: { duration: 0.3 }
-            }} // ← rotate حذف شد
-            transition={{ type: "spring", stiffness: 300, damping: 10 }}
-          >
-            <Image 
-              src="/images/hero-bg.jpg" 
-              alt="Boy looking out airplane window" 
-              fill 
-              priority
-              sizes="(max-width: 1024px) 100vw, 1152px"
-              className="object-contain object-center md:object-contain"
-            />
+      {/* بک‌گراند: موبایل در جریان صفحه (کامل)، دسکتاپ فول‌اسکرین */}
+      <div className="relative pt-[52px] md:pt-0 md:absolute md:inset-0 z-0 bg-[#0a0a0a] overflow-hidden">
+        <Image
+          src="/images/hero-bg.jpg"
+          alt="Boy looking out airplane window"
+          width={0}
+          height={0}
+          priority
+          sizes="100vw"
+          className="w-full h-auto md:h-full md:object-cover md:object-bottom"
+        />
+      </div>
 
-            {/* دکمه DISCOVER OUR IP - روی عکس در موبایل */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-              className="absolute bottom-2 right-2 z-20 md:hidden"
-            >
-              <a 
-                href="/our-ip" 
-                className="group flex items-center gap-2 px-3 py-2 border border-white/40 hover:border-kardo-accent hover:bg-kardo-accent transition-all duration-300 bg-black/60 backdrop-blur-sm rounded-lg"
-              >
-                <span className="text-[8px] sm:text-xs tracking-widest font-semibold group-hover:text-black transition-colors">
-                  DISCOVER OUR IP
-                </span>
-                <span className="text-xs group-hover:translate-x-1 group-hover:text-black transition-all">→</span>
-              </a>
-            </motion.div>
-          </motion.div>
+      {/* نوار مشکی سرتاسری هم‌اندازه هدر که زیرش به عکس محو می‌شود */}
+      <div className="absolute top-0 left-0 z-[5] w-full pointer-events-none">
+        <div className="h-[52px] md:h-[56px] bg-black" />
+        <div className="h-12 md:h-16 bg-gradient-to-b from-black to-transparent" />
+      </div>
+
+      {/* کانتینر مشترک برای هدر و دکمه */}
+      <div className="relative z-10 w-full md:h-full px-4 md:px-8">
+        <div className="relative w-full md:h-full max-w-6xl mx-auto">
 
           {/* هدر */}
           <Header activePage="HOME" />
 
-          {/* دکمه DISCOVER OUR IP - در دسکتاپ سمت راست وسط */}
+          {/* دکمه DISCOVER OUR IP - موبایل: چسبیده زیر عکس، دسکتاپ: پایین صفحه */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="hidden md:flex absolute md:top-1/2 md:right-8 md:-translate-y-1/2 z-20"
+            className="relative mt-6 pb-8 md:mt-0 md:pb-0 md:absolute md:bottom-12 md:left-0 w-full z-20 flex justify-center"
           >
-            <a 
-              href="/our-ip" 
-              className="group flex items-center gap-4 px-8 py-4 border border-white/40 hover:border-kardo-accent hover:bg-kardo-accent transition-all duration-300 bg-black/40 backdrop-blur-sm rounded-lg"
+            <a
+              href="/our-ip"
+              className="group flex items-center gap-3 md:gap-4 px-6 py-3 md:px-8 md:py-4 border border-white/40 hover:border-kardo-accent hover:bg-kardo-accent transition-all duration-300"
             >
-              <span className="text-sm tracking-widest font-semibold group-hover:text-black transition-colors">
+              <span className="text-[10px] sm:text-xs md:text-sm tracking-widest font-semibold group-hover:text-black transition-colors">
                 DISCOVER OUR IP
               </span>
-              <span className="text-lg group-hover:translate-x-1 group-hover:text-black transition-all">→</span>
+              <span className="text-base md:text-lg group-hover:translate-x-1 group-hover:text-black transition-all">→</span>
             </a>
           </motion.div>
         </div>
