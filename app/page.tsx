@@ -14,12 +14,11 @@ export default function Home() {
           {/* بک‌گراند داخل کانتینر با افکت هاور و لرزش */}
           <motion.div 
             className="relative md:absolute md:inset-0 z-0 bg-[#0a0a0a] overflow-hidden w-full h-[35vh] md:h-full rounded-lg"
-            whileHover={{ scale: 1.02, rotate: 0.5 }}
+            whileHover={{ scale: 1.02 }} // ← rotate حذف شد
             whileTap={{ 
               x: [0, -3, 3, -3, 3, 0],
-              rotate: [0, -0.5, 0.5, -0.5, 0.5, 0],
               transition: { duration: 0.3 }
-            }}
+            }} // ← rotate حذف شد
             transition={{ type: "spring", stiffness: 300, damping: 10 }}
           >
             <Image 
