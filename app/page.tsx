@@ -58,12 +58,12 @@ export default function Home() {
           <Header activePage="HOME" />
 
           {/* دکمه DISCOVER OUR IP - موبایل: چسبیده زیر عکس، دسکتاپ: پایین صفحه */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="relative mt-6 pb-8 md:mt-0 md:pb-0 md:absolute md:bottom-12 md:left-0 w-full z-20 flex justify-center"
-          >
+         <motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+  className="relative mt-6 pb-8 md:mt-0 md:pb-0 md:fixed md:bottom-24 md:left-1/2 md:-translate-x-1/2 w-full md:w-auto z-20 flex justify-center"
+>
             <a
               href="/our-ip"
               className="group flex items-center gap-3 md:gap-4 px-6 py-3 md:px-8 md:py-4 border border-white/40 hover:border-kardo-accent hover:bg-kardo-accent transition-all duration-300"
