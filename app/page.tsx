@@ -7,17 +7,33 @@ export default function Home() {
   return (
     <main className="relative min-h-dvh md:h-screen w-full overflow-hidden bg-black">
 
-      {/* بک‌گراند: موبایل در جریان صفحه (کامل)، دسکتاپ فول‌اسکرین */}
-      <div className="relative pt-[52px] md:pt-0 md:absolute md:inset-0 z-0 bg-[#0a0a0a] overflow-hidden">
-        <Image
-          src="/images/hero-bg.jpg"
-          alt="Boy looking out airplane window"
-          width={0}
-          height={0}
-          priority
-          sizes="100vw"
-          className="w-full h-auto md:h-full md:object-cover md:object-bottom"
-        />
+      {/* بک‌گراند: موبایل عکس جدا، دسکتاپ عکس فول‌اسکرین */}
+      <div className="relative md:absolute md:inset-0 z-0 bg-[#0a0a0a] overflow-hidden">
+        {/* عکس موبایل - زیر هدر نمی‌رود */}
+       <div className="md:hidden mt-[72px]">
+          <Image
+            src="/images/hero-mobile.jpg"
+            alt="Boy looking out airplane window - mobile"
+            width={0}
+            height={0}
+            priority
+            sizes="100vw"
+            className="w-full h-auto"
+          />
+        </div>
+
+        {/* عکس دسکتاپ - فول‌اسکرین */}
+        <div className="hidden md:block md:absolute md:inset-0">
+          <Image
+            src="/images/hero-bg.jpg"
+            alt="Boy looking out airplane window"
+            width={0}
+            height={0}
+            priority
+            sizes="100vw"
+            className="w-full h-full object-cover object-bottom"
+          />
+        </div>
       </div>
 
       {/* نوار مشکی سرتاسری هم‌اندازه هدر که زیرش به عکس محو می‌شود */}
