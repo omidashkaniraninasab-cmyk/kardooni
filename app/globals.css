@@ -2,15 +2,16 @@
 
 @theme {
   --font-sans: 'Manrope', sans-serif;
-  --color-kardo-dark: #0a0a0a;
+  --color-kardo-dark: #000000;
   --color-kardo-accent: #e87722;
   --color-kardo-text: #ffffff;
   --color-kardo-muted: #a3a3a3;
 }
 
 @layer base {
-  html, body {
-    @apply bg-kardo-dark text-kardo-text h-full;
+  body {
+    @apply bg-kardo-dark text-kardo-text;
+    min-height: calc(100dvh + 40px);
   }
 }
 
